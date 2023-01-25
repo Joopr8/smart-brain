@@ -1,0 +1,9 @@
+.imageContainer {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 35rem;
+}

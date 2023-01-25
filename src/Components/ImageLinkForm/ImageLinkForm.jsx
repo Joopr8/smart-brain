@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 import classes from "./ImageLinkForm.module.css";
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ onInputChange, onSubmitHandler }) => {
   return (
     <Fragment>
       <div className={classes.form}>
-        <input type="text" />
-        <button>Detect</button>
+        <input type="text" onChange={onInputChange} />
+        <button onClick={onSubmitHandler}>Detect</button>
       </div>
     </Fragment>
   );
