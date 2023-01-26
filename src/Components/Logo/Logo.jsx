@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import Tilt from "react-parallax-tilt";
 import brain from "./brain.png";
 import classes from "./Logo.module.css";
