@@ -6,6 +6,7 @@ import Rank from "./Components/Rank/Rank";
 import ParticlesBg from "particles-bg";
 import { useState } from "react";
 import ImageRecognition from "./Components/ImageRecognition/ImageRecognition";
+import SignIn from "./Components/SignIn/SignIn";
 
 const USER_ID = "28zjfqds9zvu";
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -79,6 +80,7 @@ function App() {
 
   return (
     <div className="App">
+      <SignIn />
       <ParticlesBg type="cobweb" bg={true} color="#ffffff" num={130} />
       <Navigation />
       <Logo />
