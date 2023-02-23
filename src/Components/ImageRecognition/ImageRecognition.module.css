@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.imageContainer {
+  position: absolute;
+  margin-top: 2rem;
+}
+
+img {
+  width: 35rem;
+}
+
+.boundingBox {
+  position: absolute;
+}

@@ -1,0 +1,21 @@
+.form {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px;
+}
+
+input {
+  width: 20vw;
+  padding: 1.5rem;
+  border: none;
+}
+
+button {
+  color: white;
+  border: none;
+  background-color: #ffafbd;
+  cursor: pointer;
+  padding: 0 2rem;
+  font-size: 1.5rem;
+}
