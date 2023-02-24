@@ -1,9 +1,9 @@
 import classes from "./Navigation.module.css";
 
-const Navigation = () => {
+const Navigation = ({onRouteChange}) => {
   return (
     <nav className={classes.navbar}>
-      <p className={classes.signOut}> Sign Out</p>
+      <p className={classes.signOut} onClick={() => onRouteChange("SIGN-OUT")}> Sign Out</p>
     </nav>
   );
 };

@@ -1,9 +1,20 @@
-import classes from "./SignIn.module.css";
+import classes from "../SignIn/SignIn.module.css"
 
-const SignIn = ({onRouteChange}) => {
+
+const Register = ({onRouteChange}) => {
+  
   return (
     <div>
       <form className={classes.formContainer}>
+      <div className={classes.inputContainer}>
+          <label htmlFor="email-address">Name</label>
+          <input
+            className={classes.inputForm}
+            type="Name"
+            name="name"
+            id="name"
+          />
+        </div>
         <div className={classes.inputContainer}>
           <label htmlFor="email-address">Email</label>
           <input
@@ -22,11 +33,10 @@ const SignIn = ({onRouteChange}) => {
             id="password"
           />
         </div>
-          <input className={classes.btn} onClick={() => onRouteChange("SIGN-IN")} type="submit" value="Sign in" />
-          <input className={classes.link} onClick={() => onRouteChange("REGISTER")} type="submit" value="Register" />
+          <input className={classes.btn}  onClick={() => onRouteChange("SIGN-IN")} type="submit" value="Sign In" />
       </form>
     </div>
   );
 };
 
-export default SignIn;
+export default Register;

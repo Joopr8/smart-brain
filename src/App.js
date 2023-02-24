@@ -7,6 +7,7 @@ import ParticlesBg from "particles-bg";
 import { useState } from "react";
 import ImageRecognition from "./Components/ImageRecognition/ImageRecognition";
 import SignIn from "./Components/SignIn/SignIn";
+import Register from "./Components/Register/Register";
 
 const USER_ID = "28zjfqds9zvu";
 // Your PAT (Personal Access Token) can be found in the portal under Authentification
@@ -15,11 +16,12 @@ const APP_ID = "face-detection";
 // Change this to whatever image input you want to add
 const MODEL_ID = "face-detection";
 const IMAGE_URL =
-  "https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg";
+  "";
 
 function App() {
   const [Input, setInput] = useState(IMAGE_URL);
   const [FaceBox, setFaceBox] = useState({});
+  const [UserStatus, setUserStatus] = useState("SIGN-OUT");
 
   const calculateFaceLocation = (BoxData) => {
     const clarifaiFace = JSON.parse(BoxData, null, 2).outputs[0].data.regions[0]
@@ -47,7 +49,7 @@ function App() {
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
-        app_id: APP_ID,
+        app_id: APP_ID, 
       },
       inputs: [
         {
@@ -78,19 +80,26 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
+  const onRouteChange = (status) => {
+    setUserStatus(status);
+  }
+  
   return (
     <div className="App">
-      <SignIn />
       <ParticlesBg type="cobweb" bg={true} color="#ffffff" num={130} />
-      <Navigation />
-      <Logo />
-      <Rank />
-      <ImageLinkForm
-        onInputChange={onInputChange}
-        onSubmitHandler={onSubmitHandler}
-        InputValue={Input}
-      />
-      <ImageRecognition box={FaceBox} imageLink={Input} />
+      {UserStatus === "SIGN-OUT" 
+      ? <SignIn onRouteChange={onRouteChange}/> 
+      : UserStatus === "SIGN-IN" ?
+      <div>
+          <Navigation onRouteChange={onRouteChange}/>
+          <Logo />
+          <Rank /> 
+          <ImageLinkForm onInputChange={onInputChange} onSubmitHandler={onSubmitHandler} InputValue={Input}/>
+          <ImageRecognition box={FaceBox} imageLink={Input} />
+      </div> 
+      : UserStatus === "REGISTER" ?  
+      <Register onRouteChange={onRouteChange}/> : false
+      }
     </div>
   );
 }
