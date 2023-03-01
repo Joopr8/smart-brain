@@ -33,7 +33,8 @@ const Register = ({onRouteChange}) => {
             id="password"
           />
         </div>
-          <input className={classes.btn}  onClick={() => onRouteChange("SIGN-IN")} type="submit" value="Sign In" />
+          <input className={classes.btn}  onClick={() => onRouteChange("SIGN-IN")} type="button" value="Register" />
+          <input className={classes.link} onClick={() => onRouteChange("SIGN-OUT")} type="button" value="Sign In" />
       </form>
     </div>
   );

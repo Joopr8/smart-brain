@@ -2,7 +2,6 @@ import "./App.css";
 import ImageLinkForm from "./Components/ImageLinkForm/ImageLinkForm";
 import Logo from "./Components/Logo/Logo";
 import Navigation from "./Components/Navigation/Navigation";
-import Rank from "./Components/Rank/Rank";
 import ParticlesBg from "particles-bg";
 import { useState } from "react";
 import ImageRecognition from "./Components/ImageRecognition/ImageRecognition";
@@ -24,8 +23,7 @@ function App() {
   const [UserStatus, setUserStatus] = useState("SIGN-OUT");
 
   const calculateFaceLocation = (BoxData) => {
-    const clarifaiFace = JSON.parse(BoxData, null, 2).outputs[0].data.regions[0]
-      .region_info.bounding_box;
+    const clarifaiFace = JSON.parse(BoxData, null, 2).outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
     const imgWidth = image.width;
     const imgHeight = image.height;
@@ -93,7 +91,6 @@ function App() {
       <div>
           <Navigation onRouteChange={onRouteChange}/>
           <Logo />
-          <Rank /> 
           <ImageLinkForm onInputChange={onInputChange} onSubmitHandler={onSubmitHandler} InputValue={Input}/>
           <ImageRecognition box={FaceBox} imageLink={Input} />
       </div> 

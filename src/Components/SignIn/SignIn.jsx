@@ -2,7 +2,7 @@ import classes from "./SignIn.module.css";
 
 const SignIn = ({onRouteChange}) => {
   return (
-    <div>
+    <div className={classes.container}>
       <form className={classes.formContainer}>
         <div className={classes.inputContainer}>
           <label htmlFor="email-address">Email</label>
@@ -22,8 +22,8 @@ const SignIn = ({onRouteChange}) => {
             id="password"
           />
         </div>
-          <input className={classes.btn} onClick={() => onRouteChange("SIGN-IN")} type="submit" value="Sign in" />
-          <input className={classes.link} onClick={() => onRouteChange("REGISTER")} type="submit" value="Register" />
+          <input className={classes.btn} onClick={() => onRouteChange("SIGN-IN")} type="button" value="Sign in" />
+          <input className={classes.link} onClick={() => onRouteChange("REGISTER")} type="button" value="Register" />
       </form>
     </div>
   );
