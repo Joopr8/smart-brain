@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .inputContainer {
@@ -13,6 +12,10 @@
   align-items: flex-start;
   align-self: center;
   margin-top: 1rem;
+}
+
+.inputContainer label {
+  font-size: 1.2rem;
 }
 
 .inputForm {
@@ -27,7 +30,7 @@
   align-self: center;
   background-color: #ffafbd;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   color: white;
   width: 31rem;
   padding: 0.5rem;
@@ -39,9 +42,11 @@
   align-self: center;
   background-color: none;
   font-size: 1rem;
+  font-weight: 700;
   background-color: transparent;
   padding: 0;
-  margin-top: 1rem;
+  margin-top: 0.6rem;
   cursor: pointer;
+  text-decoration: underline;
 
 }
