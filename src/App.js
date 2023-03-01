@@ -18,15 +18,17 @@ const IMAGE_URL =
   "";
 
 function App() {
-  const [Input, setInput] = useState(IMAGE_URL);
+  const [Input, setInput] = useState("");
+  const [ImageUrl, setImageUrl] = useState(IMAGE_URL);
   const [FaceBox, setFaceBox] = useState({});
   const [UserStatus, setUserStatus] = useState("SIGN-OUT");
 
   const calculateFaceLocation = (BoxData) => {
     const clarifaiFace = JSON.parse(BoxData, null, 2).outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
-    const imgWidth = image.width;
-    const imgHeight = image.height;
+    let imgWidth = image.width;
+    let imgHeight = image.height;
+
     return {
       leftCol: clarifaiFace.left_col * imgWidth,
       topRow: clarifaiFace.top_row * imgHeight,
@@ -35,15 +37,16 @@ function App() {
     };
   };
 
-  const displayFaceBox = (box) => {
-    setFaceBox(box);
-  };
-
   const onInputChange = (e) => {
     setInput(e.target.value);
   };
 
+  const displayFaceBox = (box) => {
+    setFaceBox(box);
+  };
+
   const onSubmitHandler = (e) => {
+    setImageUrl(Input);
     const raw = JSON.stringify({
       user_app_id: {
         user_id: USER_ID,
@@ -68,11 +71,7 @@ function App() {
       },
       body: raw,
     };
-
-    fetch(
-      `https://api.clarifai.com/v2/models/${MODEL_ID}/outputs`,
-      requestOptions
-    )
+    fetch(`https://api.clarifai.com/v2/models/${MODEL_ID}/outputs`,requestOptions)
       .then((response) => response.text())
       .then((result) => displayFaceBox(calculateFaceLocation(result)))
       .catch((error) => console.log("error", error));
@@ -92,7 +91,8 @@ function App() {
           <Navigation onRouteChange={onRouteChange}/>
           <Logo />
           <ImageLinkForm onInputChange={onInputChange} onSubmitHandler={onSubmitHandler} InputValue={Input}/>
-          <ImageRecognition box={FaceBox} imageLink={Input} />
+          {Input ? <ImageRecognition box={FaceBox} imageLink={ImageUrl} /> 
+          : false }
       </div> 
       : UserStatus === "REGISTER" ?  
       <Register onRouteChange={onRouteChange}/> : false
