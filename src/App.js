@@ -14,21 +14,21 @@ const PAT = "24b3eaf623594a1f8448dd6bbbf8336e";
 const APP_ID = "face-detection";
 // Change this to whatever image input you want to add
 const MODEL_ID = "face-detection";
-const IMAGE_URL =
-  "";
+const IMAGE_URL ="";
 
 function App() {
   const [Input, setInput] = useState("");
   const [ImageUrl, setImageUrl] = useState(IMAGE_URL);
   const [FaceBox, setFaceBox] = useState({});
   const [UserStatus, setUserStatus] = useState("SIGN-OUT");
+  const [ImageError, setImageError] = useState("FALSE");
 
   const calculateFaceLocation = (BoxData) => {
     const clarifaiFace = JSON.parse(BoxData, null, 2).outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById("inputImage");
-    let imgWidth = image.width;
     let imgHeight = image.height;
-
+    let imgWidth = image.width;
+    
     return {
       leftCol: clarifaiFace.left_col * imgWidth,
       topRow: clarifaiFace.top_row * imgHeight,
@@ -39,6 +39,7 @@ function App() {
 
   const onInputChange = (e) => {
     setInput(e.target.value);
+    setImageError ("FALSE");
   };
 
   const displayFaceBox = (box) => {
@@ -74,7 +75,11 @@ function App() {
     fetch(`https://api.clarifai.com/v2/models/${MODEL_ID}/outputs`,requestOptions)
       .then((response) => response.text())
       .then((result) => displayFaceBox(calculateFaceLocation(result)))
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        setImageUrl("");
+        setImageError ("TRUE");
+
+      });
   };
 
   const onRouteChange = (status) => {
@@ -91,8 +96,7 @@ function App() {
           <Navigation onRouteChange={onRouteChange}/>
           <Logo />
           <ImageLinkForm onInputChange={onInputChange} onSubmitHandler={onSubmitHandler} InputValue={Input}/>
-          {Input ? <ImageRecognition box={FaceBox} imageLink={ImageUrl} /> 
-          : false }
+          <ImageRecognition ImageError={ImageError} box={FaceBox} imageLink={ImageUrl}/>
       </div> 
       : UserStatus === "REGISTER" ?  
       <Register onRouteChange={onRouteChange}/> : false
