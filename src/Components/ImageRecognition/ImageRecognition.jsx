@@ -1,7 +1,7 @@
 import classes from "./ImageRecognition.module.css";
 let stylesBox;
 
-const ImageRecognition = ({ imageLink, box }) => {
+const ImageRecognition = ({ imageLink, box, ImageError }) => {
   if (box.topRow !== undefined) {
     stylesBox = {
       border: "solid 0.3rem aqua",
@@ -12,12 +12,18 @@ const ImageRecognition = ({ imageLink, box }) => {
     };
   }
 
+  
   return (
     <div className={classes.container}>
-      <div className={classes.imageContainer}>
-        <span className={classes.boundingBox} style={stylesBox}></span>
-        <img id="inputImage" src={imageLink} alt={imageLink} />
-      </div>
+      {
+        ImageError === "FALSE" ? 
+        (<div id="ImageContainer" className={classes.imageContainer}>
+          <span className={classes.boundingBox} style={stylesBox}></span>
+          <img id="inputImage" src={imageLink} alt={imageLink} />
+        </div>)  
+      : ImageError === "TRUE" ? 
+      (<div className={classes.errorMessage}>This adress is not valid </div>)
+      : false}
     </div>
   );
 };

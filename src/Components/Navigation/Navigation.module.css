@@ -5,7 +5,8 @@
 }
 
 .signOut {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-decoration: underline;
   margin: 1.5rem;
+  cursor: pointer;
 }

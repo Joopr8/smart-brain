@@ -13,6 +13,7 @@ const Logo = () => {
       >
         <img className={classes.tiltImage} src={brain} alt="brain" />
       </Tilt>
+      <div className={classes.title}>Please insert an image adress and try to detect some faces</div>
     </div>
   );
 };
