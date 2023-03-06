@@ -4,9 +4,9 @@
 The smart brain project is a app that will detect some faces.
 
 ## Table of Content
-[Create React App](https://github.com/facebook/create-react-app)
-[particles-bg](https://www.npmjs.com/package/particles-bg)
-[react-parallax-tilt](https://www.npmjs.com/package/react-parallax-tilt)
+[Create React App](https://github.com/facebook/create-react-app) 
+[particles-bg](https://www.npmjs.com/package/particles-bg) 
+[react-parallax-tilt](https://www.npmjs.com/package/react-parallax-tilt) 
 [Clarifai face-detection](https://clarifai.com/clarifai/main/models/face-detection)
 
 ## About the project 
