@@ -26,4 +26,4 @@ npm start
 ```
 
 ## Aproach
-It uses functional components with hooks and the context API, which will be updated when a new transaction is added.
+This one was a challenge because the original project was done before ES6 and React Hooks launch, and I did this version with de new approaches available. Uses hooks, functional components, and styling are made with CSS modules. 
