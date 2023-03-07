@@ -24,6 +24,8 @@ npm install
 # Run on http://localhost:3000
 npm start
 ```
+You must add your own API key in the src/App.js file to connect to Clarifai. 
+[Clarifai API](https://www.clarifai.com/)
 
 ## Aproach
 This one was a challenge because the original project was done before ES6 and React Hooks launch, and I did this version with de new approaches available. Uses hooks, functional components, and styling are made with CSS modules. 
