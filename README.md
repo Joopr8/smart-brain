@@ -4,10 +4,10 @@
 The smart brain project is a app that will detect some faces.
 
 ## Table of Content
-[Create React App](https://github.com/facebook/create-react-app)
-[particles-bg](https://www.npmjs.com/package/particles-bg) 
-[react-parallax-tilt](https://www.npmjs.com/package/react-parallax-tilt)
-[Clarifai face-detection](https://clarifai.com/clarifai/main/models/face-detection)
+*[Create React App](https://github.com/facebook/create-react-app)
+*[particles-bg](https://www.npmjs.com/package/particles-bg) 
+*[react-parallax-tilt](https://www.npmjs.com/package/react-parallax-tilt)
+*[Clarifai face-detection](https://clarifai.com/clarifai/main/models/face-detection)
 
 ## About the project 
 This project is a food order app with a list of meals from which we can choose and add these meals to the card, change their amounts and add them multiple times and view the card with our meals.
